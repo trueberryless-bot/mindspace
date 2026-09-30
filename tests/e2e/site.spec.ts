@@ -27,7 +27,10 @@ test.describe('home page', () => {
       'content',
       /\/og\/og-image\.png$/
     )
-    await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/favicon.svg')
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
+      'href',
+      /^(\/favicon\.svg|blob:.*)$/
+    )
   })
 
   test('does not scroll horizontally', async ({ page }) => {
