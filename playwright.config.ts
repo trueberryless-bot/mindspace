@@ -15,7 +15,8 @@ export default defineConfig({
   testDir: 'tests/e2e',
   use: { baseURL, screenshot: 'only-on-failure', trace: 'on-first-retry' },
   webServer: {
-    command: `PORT=${PORT} node tests/serve.mjs`,
+    command: 'node tests/serve.mjs',
+    env: { PORT: String(PORT) },
     reuseExistingServer: false,
     timeout: 120_000,
     url: baseURL

@@ -16,7 +16,13 @@ const types = {
 }
 
 function resolveFile(pathname) {
-  const path = join(root, normalize(decodeURIComponent(pathname)))
+  let decoded
+  try {
+    decoded = decodeURIComponent(pathname)
+  } catch {
+    return undefined
+  }
+  const path = join(root, normalize(decoded))
   const candidates = [path, `${path}.html`, join(path, 'index.html')]
 
   return candidates.find(

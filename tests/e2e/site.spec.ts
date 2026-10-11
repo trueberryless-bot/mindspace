@@ -78,6 +78,7 @@ test('shows the not found page', async ({ page }) => {
   const response = await page.goto('/does-not-exist')
 
   expect(response?.status()).toBe(404)
+  await expect(page.getByText('Page Not Found...')).toBeVisible()
 })
 
 test.describe('accessibility', () => {
